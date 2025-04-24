@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" /><!--thư viện icon-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/index.js"></script>
+    <title>Bán Đồng Hồ</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+          <div class="logo">
+            <a href="../html/index.html">TRANG CHỦ</a>
+          </div>
+      
+          <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+      
+          <nav class="nav" id="nav-menu">
+            <ul class="menu">
+              <li>
+                <a href="#">Sản phẩm <i class="fas fa-caret-down"></i></a>
+                <ul class="submenu">
+                  <li><a href="#">Đồng hồ nam</a></li>
+                  <li><a href="#">Đồng hồ nữ</a></li>
+                  <li><a href="#">Đồng hồ điện tử</a></li>
+                  <li><a href="#">Đồng hồ thông minh</a></li>
+                  <li><a href="#">Đồng hồ trẻ em</a></li>
+                  <li><a href="#">Đồng hồ báo thức</a></li>
+                </ul>
+              </li>
+              <li><a href="./gtsp.html">Chi tiết cửa hàng</a></li>
+              <li><a href="../html/gioHang.html">Giỏ hàng</a></li>
+            </ul>
+          </nav>
+      
+          <div class="header-right">
+            <div class="search">
+              <input type="text" class="search-input" placeholder="Tìm kiếm...">
+              <div class="search-icon">
+                <i class="fas fa-search"></i>
+              </div>
+            </div>
+            <div class="auth">
+              <a href="../html/dangnhap.html"><i class="fas fa-user"></i> Đăng nhập</a>
+              <a href="../html/dangky.html"><i class="fas fa-user-plus"></i> Đăng ký</a>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+    <div class="thongbao">
+        <marquee ><h3 style="padding: 5px;"></h3></marquee>
+    </div>
+    
+    <div class="nenqc">
+        <img src="idex.jpg" alt="nền" id="image">
+    </div>
+    <div style="font-size: 2em; font-weight: bold;color: #333;text-align: center; margin-top: 20px;padding:10px;background-color: #eb76c6; ">SẢN PHẨM HOT</div>
+    <div class="sphot">
+        <div >
+            <img src="elio.jpg" alt="#">
+            <p><strong>Đồng hồ Elio 38 mm</strong></p>
+            <p class="gia"><strong>650.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio"><input type="submit" onclick="addToCart('Đồng hồ Elio 38 mm', 650000, 'https:elio.jpg')" value="THÊM VÀO GIỎ"></a>
+                <a href="../html/chitiet.html?name=Đồng hồ Elio 38 mm&image=elio.jpg&price=650000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>          
+            </div>
+        </div>
+        <div>
+            <img src="ELIO2.jpg" alt="#">
+            <p><strong>Đồng hồ ELIO</strong></p>
+            <p class="gia"><strong>3.500.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio"><input type="submit" onclick="addToCart('Đồng hồ ELIO',3500000, 'https:ELIO2.jpg')" value="THÊM VÀO GIỎ"></a>
+                <a href="../html/chitiet.html?name=Đồng hồ ELIO&image=ELIO2.jpg&price=3500000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>            
+            </div>
+        </div>
+        <div>
+            <img src="galaxy.jpg" alt="#">
+            <p><strong>Đồng hồ Galaxy</strong></p>
+            <p class="gia"><strong>4.000.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio"><input type="submit" onclick="addToCart('Đồng hồ thông minh Samsung Galaxy',4000000, 'https:galaxy.jpg')" value="THÊM VÀO GIỎ"></a>
+                <a href="../html/chitiet.html?name=Đồng hồ thông minh Samsung Galaxy&image=galaxy.jpg&price=4000000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>            
+            </div>
+        </div>
+        <div>
+            <img src="watch5.jpg" alt="#">
+            <p><strong>Đồng hồ thông minh Watch5</strong></p>
+            <p class="gia"><strong>250.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng hồ thông minh Watch5',250000, 'https:watch5.jpg')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ thông minh Watch5&image=watch5.jpg&price=250000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>            
+            </div>
+        </div>
+        <div>
+            <img src="led.jpg" alt="#">
+            <p><strong>Đồng hồ led để bàn</strong></p>
+            <p class="gia"><strong>1.000.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng hồ led để bàn',1000000, 'https:led.jpg')" type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ led để bàn&image=led.jpg&price=1000000000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="sphot">
+        <div>
+            <img src="CRRJU.jpg" alt="#">
+            <p><strong>Đồng hồ nam CRRJU 2117L</strong></p>
+            <p class="gia"><strong>400.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng hồ nam CRRJU 2117L',400000, 'https:CRRJU.jpg')" type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ nam CRRJU 2117L&image=CRRJU.jpg&price=400000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="Tisselly.jpg" alt="#">
+            <p><strong>Đồng hồ Tisselly điện tử</strong></p>
+            <p class="gia"><strong>700.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng hồ Tisselly điện tử',700000, 'https:Tisselly.jpg')" type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ Tisselly điện tử&image=Tisselly.jpg&price=700000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="SKMEI.jpg" alt="#">
+            <p><strong>Đồng Hồ Điện Tử SKMEI</strong></p>
+            <p class="gia"><strong>1.500.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng Hồ Điện Tử SKMEI',1500000, 'https:SKMEI.jpg')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng Hồ Điện Tử SKMEI&image=SKMEI.jpg &price=1500000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="mini.jpg" alt="#">
+            <p><strong>Đồng Hồ Điện Tử mini </strong></p>
+            <p class="gia"><strong>2.500.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng Hồ Điện Tử mini ',2500000, 'https:mini.jpg')" type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng Hồ Điện Tử mini Adian&image=mini.jpg&price=2500000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="dientu.jpg" alt="#">
+            <p><strong>Đồng Hồ LED Điện Tử</strong></p>
+            <p class="gia"><strong>350.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input  onclick="addToCart('Đồng Hồ LED Điện Tử',3500000, 'https:dientu.jpg')" type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng Hồ LED Điện Tử&image=dientu.jpg s&price=350000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div style=" font-size: 2em; font-weight: bold;color: #333;text-align: center; margin-top: 70px;padding:10px; background-color: khaki; ">SẢN PHẨM BÁN CHẠY</div>
+    <div class="sphot">
+        <div>
+            <img src="Zoomstar.jpg" alt="#" >
+            <p><strong>Đồng hồ điện tử Zoomstar</strong></p>
+            <p class="gia"><strong>7.000.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input type="submit" onclick="addToCart(' Đồng hồ điện tử Zoomstar ', 7000000 , ' https:Zoomstar.jpg')"  value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ điện tử Zoomstar&image=Zoomstar.jpg&price=7000000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="thethao.jpg" alt="#" >
+            <p><strong>Đồng hồ nữ thể thao</strong></p>
+            <p class="gia"><strong>3.500.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart(' Đồng hồ nữ thể thao ', 3500000 , 'https:thethao.jpg')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ nữ thể thao&image=thethao.jpg&price=35000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="crnaira.jpg" alt="#" >
+            <p><strong>Đồng Hồ Nam Crnaira</strong></p>
+            <p class="gia"><strong>35.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart(' Đồng Hồ Nam Crnaira ',35000  , 'https:crnaira.jpg')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng Hồ Nam Crnaira&image=crnaira.jpg&price=35000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+
+            </div>
+        </div>
+        <div>
+            <img src="curren.jpg" alt="#" >
+            <p><strong>Đồng hồ CURREN</strong></p>
+            <p class="gia"><strong>150.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng hồ CURREN  ',150000  , 'https:curren.jpg')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ CURREN&image=curren.jpg&price=150000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="lige.jpg" alt="#" >
+            <p><strong>Đồng hồ nam LIGE</strong></p>
+            <p class="gia"><strong>2.000.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng hồ nam LIGE  ', 2000000 , 'https:lige.jpg ')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ nam LIGE&image=lige.jpg&price=2000000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="sphot">
+        <div>
+            <img src="gedi.jpg" alt="#" >
+            <p><strong>Đồng Hồ Gedi</strong></p>
+            <p class="gia"><strong>100.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart(' Đồng Hồ Gedi ', 100000 , 'https:gedi.jpg')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng Hồ Gedi&image=gedi.jpg&price=100000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="watch.jpg" alt="#" >
+            <p><strong>Đồng hồ thông minh Watch5 </strong></p>
+            <p class="gia"><strong>80.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart(' Đồng hồ thông minh Watch5 mini ', 80000 , 'https:watch.jpg')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ thông minh Watch5 mini&image=watch.jpg&price=80000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="baothuc.jpg" alt="#" >
+            <p><strong>Đồng hồ báo thức </strong></p>
+            <p class="gia"><strong>35.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng hồ báo thức   ', 35000 , ' https:baothuc.jpg')"  type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ báo thức&image=baothuc.jpg&price=35000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="shikick.jpg" alt="#" >
+            <p><strong>Đồng hồ điện tử SHIKICK</strong></p>
+            <p class="gia"><strong>900.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart(' Đồng hồ điện tử SHIKICK ',  900000, 'https:shikick.jpg ')" type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ điện tử SHIKICK&image=shikick.jpg&price=900000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+        <div>
+            <img src="Tisselly2.jpg" alt="#" >
+            <p><strong>Đồng hồ điện tử Tisselly</strong></p>
+            <p class="gia"><strong>3.500.000đ</strong></p>
+            <div class="giohang">
+                <a href="" class="themgio">
+                    <input onclick="addToCart('Đồng hồ điện tử Tisselly  ', 3500000 , 'https:Tisselly2.jpg ')" type="submit" value="THÊM VÀO GIỎ">
+                </a>
+                <a href="../html/chitiet.html?name=Đồng hồ điện tử Tisselly&image=Tisselly2.jpg&price=3500000" class="mua">
+                    <input type="submit" value="Xem Chi Tiết">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="end">
+        <div class="uudai">
+            <h5>THEO DÕI VÀ ĐĂNG KÍ ĐỂ NHẬN ƯU ĐÃI</h5>
+            <p><input type="submit" value="ĐĂNG KÝ"></p>
+        </div>
+        <div class="theodoi"> 
+            <h5>THEO DÕI CHÚNG TÔI</h5>
+            <div class="iconlk">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="hotline">
+            <h4>HOTLINE</h4>
+            <strong>098766666</strong>
+        </div>
+    </div>
+    <div class="end2">
+        <div class="gthieu">
+            <strong></strong>
+        </div>
+        <div class="diachi">
+            <strong>Địa chỉ: </strong>Đỗ Thế Diên - Phường Nhân Hòa - Thị xã Mỹ Hào - Tỉnh Hưng yên
+            <p><strong>Tel: </strong>098766666</p>
+            <p><strong>Gmail: </strong>duyhuy2812@gamil.com</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<script src="../js/dkydnhap.js"></script>      
+
+
+
+
+<script>
+    document.querySelector('.add-to-cart-button').addEventListener('click', function() {
+    // Giả sử có logic thêm sản phẩm vào danh sách ở đây
+    document.querySelector('.cart-container').style.display = 'block';
+});
+
+</script>
