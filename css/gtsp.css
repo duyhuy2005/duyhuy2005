@@ -1,0 +1,74 @@
+body {
+    font-family:'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-image: url("images//backgr/hinhnen4.jpg");
+    background-size: 100%;
+}
+header {
+    text-align: center;
+    padding: 20px;
+    background:  linear-gradient(45deg,blue, red, greenyellow, orangered, green,purple);
+    background-clip: text;
+    -webkit-background-clip:text;
+    color: transparent;
+    text-decoration: none;
+}
+header h1 {
+    margin: 0;
+    
+}
+section {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+section h2{
+    border-bottom: 2px solid pink;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-left: 10px;
+}
+
+.about-shop {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.about-shop .info {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px pink;
+    border-radius: 8px;
+    border: 5px solid transparent;
+    border-image: url(images/backgr/hinhnen4.jpg) 0.5 round;
+}
+.about-shop img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #887125;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+.btn-back:hover {
+    background-color: #887125;
+    color: greenyellow;
+    box-shadow: 0 0 5px #887125 , 0 0 10px  #a78b30 , 0 0 15px  #ccaa3c ,0 0 20px #f9d14e;
+    border-radius: 5px;
+}
+footer {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
