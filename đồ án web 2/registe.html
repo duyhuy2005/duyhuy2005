@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Larkon - Đăng ký</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="register">
+    <div class="page">
+      <header class="header">
+        <div class="header-left">
+          <a href="category.html" class="logo">
+            <span class="logo-icon">🛍️</span>
+            <span class="logo-text">Larkon</span>
+          </a>
+          <nav class="nav">
+            <a href="category.html" data-nav="category">Sản phẩm</a>
+            <a href="cart.html" data-nav="cart">Giỏ hàng</a>
+            <a href="orders.html" data-nav="orders">Đơn hàng</a>
+            <a href="profile.html" data-nav="profile">Tài khoản</a>
+          </nav>
+        </div>
+        <div class="header-right" id="userArea"></div>
+      </header>
+
+      <main class="container auth-wrapper">
+        <div class="form-card" style="width: 100%; max-width: 420px">
+          <h2 class="text-center">Đăng ký tài khoản</h2>
+          <form id="registerForm">
+            <div class="form-group">
+              <label for="fullName">Họ tên</label>
+              <input id="fullName" name="fullName" type="text" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Mật khẩu</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+              />
+            </div>
+            <button class="btn-primary" type="submit" style="width: 100%">
+              Đăng ký
+            </button>
+          </form>
+          <p class="card-sub" style="margin-top: 10px">
+            Đã có tài khoản?
+            <a href="login.html">Đăng nhập</a>
+          </p>
+        </div>
+      </main>
+
+      <footer class="footer">
+        © 2025 Larkon - Trang 3.27: Đăng ký
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

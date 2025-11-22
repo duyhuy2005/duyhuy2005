@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Larkon - Chi tiết sản phẩm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="detail">
+    <div class="page">
+      <header class="header">
+        <div class="header-left">
+          <a href="category.html" class="logo">
+            <span class="logo-icon">🛍️</span>
+            <span class="logo-text">Larkon</span>
+          </a>
+          <nav class="nav">
+            <a href="category.html" data-nav="category">Sản phẩm</a>
+            <a href="cart.html" data-nav="cart">Giỏ hàng</a>
+            <a href="orders.html" data-nav="orders">Đơn hàng</a>
+            <a href="profile.html" data-nav="profile">Tài khoản</a>
+          </nav>
+        </div>
+        <div class="header-right" id="userArea"></div>
+      </header>
+
+      <main class="container">
+        <h1 class="page-title">Chi tiết sản phẩm</h1>
+
+        <div class="detail-layout">
+          <div class="detail-image">
+            <img id="productImage" src="" alt="" />
+          </div>
+
+          <div class="detail-info">
+            <h2 id="productName" class="detail-name"></h2>
+            <div id="productRating" class="detail-rating"></div>
+            <div class="detail-price">
+              <span id="productPrice" class="price"></span>
+              <span id="productOldPrice" class="old-price"></span>
+            </div>
+            <p id="productDescription" class="detail-desc"></p>
+
+            <div class="form-group">
+              <label for="variantSelect">Chọn biến thể</label>
+              <select id="variantSelect"></select>
+            </div>
+
+            <div class="form-group">
+              <label for="detailQty">Số lượng</label>
+              <input
+                id="detailQty"
+                type="number"
+                min="1"
+                value="1"
+                style="max-width: 120px"
+              />
+            </div>
+
+            <div class="detail-actions">
+              <button id="addToCartBtn" class="btn-secondary">
+                Thêm vào giỏ
+              </button>
+              <button id="buyNowBtn" class="btn-primary">Mua ngay</button>
+            </div>
+
+            <p style="margin-top: 10px">
+              <span class="badge">Miễn phí vận chuyển nội thành</span>
+              <span class="badge">Đổi trả trong 7 ngày</span>
+            </p>
+          </div>
+        </div>
+
+        <section style="margin-top: 28px">
+          <h2>Đánh giá sản phẩm (3.25)</h2>
+          <div id="reviewList" style="margin-top: 10px"></div>
+
+          <div class="form-card">
+            <form id="reviewForm">
+              <div class="form-group">
+                <label for="reviewName">Tên của bạn (tuỳ chọn)</label>
+                <input id="reviewName" type="text" />
+              </div>
+              <div class="form-group">
+                <label for="reviewRating">Số sao</label>
+                <select id="reviewRating">
+                  <option value="5">5 sao</option>
+                  <option value="4">4 sao</option>
+                  <option value="3">3 sao</option>
+                  <option value="2">2 sao</option>
+                  <option value="1">1 sao</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="reviewComment">Nội dung đánh giá</label>
+                <textarea id="reviewComment" required></textarea>
+              </div>
+              <button class="btn-primary" type="submit">Gửi đánh giá</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        © 2025 Larkon - Trang 3.2 &amp; 3.25: Chi tiết &amp; đánh giá SP
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

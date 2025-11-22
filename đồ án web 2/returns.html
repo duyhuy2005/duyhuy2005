@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Larkon - Đơn hàng của tôi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="orders">
+    <div class="page">
+      <header class="header">
+        <div class="header-left">
+          <a href="category.html" class="logo">
+            <span class="logo-icon">🛍️</span>
+            <span class="logo-text">Larkon</span>
+          </a>
+          <nav class="nav">
+            <a href="category.html" data-nav="category">Sản phẩm</a>
+            <a href="cart.html" data-nav="cart">Giỏ hàng</a>
+            <a href="orders.html" data-nav="orders">Đơn hàng</a>
+            <a href="profile.html" data-nav="profile">Tài khoản</a>
+          </nav>
+        </div>
+        <div class="header-right" id="userArea"></div>
+      </header>
+
+      <main class="container">
+        <h1 class="page-title">Đơn hàng của tôi</h1>
+        <p class="page-subtitle">
+          3.23: Danh sách đơn, timeline trạng thái.
+        </p>
+
+        <div id="orderList"></div>
+      </main>
+
+      <footer class="footer">
+        © 2025 Larkon - Trang 3.23: Theo dõi đơn hàng
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
+

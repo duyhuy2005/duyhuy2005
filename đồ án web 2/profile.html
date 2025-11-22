@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Larkon - Hồ sơ tài khoản</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="profile">
+    <div class="page">
+      <header class="header">
+        <div class="header-left">
+          <a href="category.html" class="logo">
+            <span class="logo-icon">🛍️</span>
+            <span class="logo-text">Larkon</span>
+          </a>
+          <nav class="nav">
+            <a href="category.html" data-nav="category">Sản phẩm</a>
+            <a href="cart.html" data-nav="cart">Giỏ hàng</a>
+            <a href="orders.html" data-nav="orders">Đơn hàng</a>
+            <a href="profile.html" data-nav="profile">Tài khoản</a>
+          </nav>
+        </div>
+        <div class="header-right" id="userArea"></div>
+      </header>
+
+      <main class="container">
+        <h1 class="page-title">Hồ sơ tài khoản</h1>
+        <p class="page-subtitle">
+          3.26: Thông tin cá nhân, địa chỉ, đổi mật khẩu.
+        </p>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 20px;
+          "
+        >
+          <section class="form-card">
+            <h3>Thông tin hiện tại</h3>
+            <div id="profileInfo" style="margin-top: 8px"></div>
+          </section>
+
+          <section>
+            <div class="form-card">
+              <h3>Cập nhật hồ sơ</h3>
+              <form id="profileForm">
+                <div class="form-group">
+                  <label for="fullName">Họ tên</label>
+                  <input id="fullName" name="fullName" type="text" />
+                </div>
+                <div class="form-group">
+                  <label for="address">Địa chỉ</label>
+                  <textarea id="address" name="address"></textarea>
+                </div>
+                <button class="btn-primary" type="submit">
+                  Lưu thay đổi
+                </button>
+              </form>
+            </div>
+
+            <div class="form-card" style="margin-top: 16px">
+              <h3>Đổi mật khẩu</h3>
+              <form id="passwordForm">
+                <div class="form-group">
+                  <label for="currentPassword">Mật khẩu hiện tại</label>
+                  <input
+                    id="currentPassword"
+                    name="currentPassword"
+                    type="password"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="newPassword">Mật khẩu mới</label>
+                  <input
+                    id="newPassword"
+                    name="newPassword"
+                    type="password"
+                  />
+                </div>
+                <button class="btn-primary" type="submit">
+                  Đổi mật khẩu
+                </button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <footer class="footer">
+        © 2025 Larkon - Trang 3.26: Hồ sơ tài khoản
+      </footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
