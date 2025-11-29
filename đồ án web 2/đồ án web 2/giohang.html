@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Larkon - Giỏ hàng</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-page="cart">
+    <div class="page">
+      <header class="header">
+        <div class="header-left">
+          <a href="category.html" class="logo">
+            <span class="logo-icon">🛍️</span>
+            <span class="logo-text">Larkon</span>
+          </a>
+          <nav class="nav">
+            <a href="category.html" data-nav="category">Sản phẩm</a>
+            <a href="cart.html" data-nav="cart">Giỏ hàng</a>
+            <a href="orders.html" data-nav="orders">Đơn hàng</a>
+            <a href="profile.html" data-nav="profile">Tài khoản</a>
+          </nav>
+        </div>
+        <div class="header-right" id="userArea"></div>
+      </header>
+
+      <main class="container">
+        <h1 class="page-title">Giỏ hàng</h1>
+        <p class="page-subtitle">
+          3.21: Danh sách sản phẩm, số lượng, voucher, tạm tính.
+        </p>
+
+        <p id="cartEmptyMsg" class="empty" style="display: none">
+          Giỏ hàng đang trống.
+        </p>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>Đơn giá</th>
+              <th>Số lượng</th>
+              <th>Thành tiền</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="cartBody"></tbody>
+        </table>
+
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 20px;
+          "
+        >
+          <div class="form-card" style="max-width: 320px">
+            <h3>Mã voucher</h3>
+            <p class="card-sub">
+              Demo: dùng mã <strong>GIAM10</strong> để giảm 10%.
+            </p>
+            <div class="form-group">
+              <label for="voucherCode">Mã giảm giá</label>
+              <input id="voucherCode" type="text" />
+            </div>
+            <button id="applyVoucher" class="btn-primary">Áp dụng</button>
+          </div>
+
+          <div class="form-card" style="max-width: 320px">
+            <h3>Tạm tính</h3>
+            <p>Tạm tính: <strong id="subtotal">$0</strong></p>
+            <p>Giảm giá: <strong id="discount">-$0</strong></p>
+            <p>
+              Tổng cộng: <strong id="total">$0</strong>
+            </p>
+            <div class="text-right" style="margin-top: 12px">
+              <a href="checkout.html" class="btn-primary">Đặt hàng</a>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">© 2025 Larkon - Trang 3.21: Giỏ hàng</footer>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

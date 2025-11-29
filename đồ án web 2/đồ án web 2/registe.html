@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Larkon - Đăng ký</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="đnstyle.css" />
+  </head>
+  <body data-page="register">
+    <div class="page">
+      <header class="header">
+        <div class="header-left">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">🛍️</span>
+            <span class="logo-text">Larkon</span>
+          </a>
+          <nav class="nav">
+            <a href="index.html" data-nav="home">Trang chủ</a>
+            <a href="product.html" data-nav="product">Sản phẩm</a>
+            <a href="giohang.html" data-nav="cart">Giỏ hàng</a>
+            <a href="orders.html" data-nav="orders">Đơn hàng</a>
+            <a href="profile.html" data-nav="profile">Tài khoản</a>
+          </nav>
+        </div>
+        <div class="header-right" id="userArea"></div>
+      </header>
+
+      <main class="container auth-wrapper">
+        <div class="form-card">
+          <h2 class="text-center">Đăng ký</h2>
+
+          <form id="registerForm">
+            <div class="form-group">
+              <label for="registerName">Họ và tên</label>
+              <input
+                id="registerName"
+                type="text"
+                placeholder="Nguyễn Văn A"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="registerEmail">Email</label>
+              <input
+                id="registerEmail"
+                type="email"
+                placeholder="vd: user@larkon.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="registerPassword">Mật khẩu</label>
+              <input
+                id="registerPassword"
+                type="password"
+                placeholder="Tối thiểu 6 ký tự"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="registerConfirm">Nhập lại mật khẩu</label>
+              <input
+                id="registerConfirm"
+                type="password"
+                placeholder="Nhập lại mật khẩu"
+                required
+              />
+            </div>
+            <button class="btn-primary" type="submit">Tạo tài khoản</button>
+          </form>
+
+          <p class="card-sub">
+            Đã có tài khoản?
+            <a href="login.html">Đăng nhập</a>
+          </p>
+        </div>
+      </main>
+
+      <footer class="footer">
+        © 2025 Larkon - Đăng ký
+      </footer>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>

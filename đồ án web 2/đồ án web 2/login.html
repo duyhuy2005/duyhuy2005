@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Larkon - Đăng nhập</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="đnstyle.css" />
+  </head>
+  <body data-page="login">
+    <div class="page">
+      <!-- HEADER -->
+      <header class="header">
+        <div class="header-left">
+          <a href="index.html" class="logo">
+            <span class="logo-icon">🛍️</span>
+            <span class="logo-text">Larkon</span>
+          </a>
+          <nav class="nav">
+            <a href="index.html" data-nav="home">Trang chủ</a>
+            <a href="product.html" data-nav="product">Sản phẩm</a>
+            <a href="giohang.html" data-nav="cart">Giỏ hàng</a>
+            <a href="orders.html" data-nav="orders">Đơn hàng</a>
+            <a href="profile.html" data-nav="profile">Tài khoản</a>
+          </nav>
+        </div>
+        <div class="header-right" id="userArea"></div>
+      </header>
+
+      <!-- BODY -->
+      <main class="container auth-wrapper">
+        <div class="form-card">
+          <h2 class="text-center">Đăng nhập</h2>
+
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input
+                id="loginEmail"
+                type="email"
+                placeholder="vd: user@larkon.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Mật khẩu</label>
+              <input
+                id="loginPassword"
+                type="password"
+                placeholder="Nhập mật khẩu"
+                required
+              />
+            </div>
+            <button class="btn-primary" type="submit">Đăng nhập</button>
+          </form>
+
+          <p class="card-sub">
+            Chưa có tài khoản?
+            <a href="registe.html">Đăng ký</a>
+          </p>
+          <p class="card-sub">
+            Quên mật khẩu?
+            <a href="forgot.html">Đặt lại mật khẩu</a>
+          </p>
+        </div>
+      </main>
+
+      <footer class="footer">
+        © 2025 Larkon - Đăng nhập
+      </footer>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>
