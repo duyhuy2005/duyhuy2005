@@ -1,68 +1,283 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Larkon - Đặt hàng &amp; thanh toán</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body data-page="checkout">
-    <div class="page">
-      <header class="header">
-        <div class="header-left">
-          <a href="category.html" class="logo">
-            <span class="logo-icon">🛍️</span>
-            <span class="logo-text">Larkon</span>
-          </a>
-          <nav class="nav">
-            <a href="category.html" data-nav="category">Sản phẩm</a>
-            <a href="cart.html" data-nav="cart">Giỏ hàng</a>
-            <a href="orders.html" data-nav="orders">Đơn hàng</a>
-            <a href="profile.html" data-nav="profile">Tài khoản</a>
-          </nav>
-        </div>
-        <div class="header-right" id="userArea"></div>
-      </header>
-
-      <main class="container">
-        <h1 class="page-title">Đặt hàng &amp; thanh toán</h1>
-        <p class="page-subtitle">
-          3.22: Địa chỉ, phương thức thanh toán, xác nhận.
-        </p>
-
-        <div
-          style="
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-            gap: 20px;
-          "
-        >
-          <section class="form-card" id="checkoutCartSummary"></section>
-
-          <section>
-            <form id="checkoutForm" class="form-card">
-              <h3>Thông tin đặt hàng</h3>
-              <div class="form-group">
-                <label for="address">Địa chỉ nhận hàng</label>
-                <textarea id="address" name="address" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="payment">Phương thức thanh toán</label>
-                <select id="payment" name="payment">
-                  <option value="COD">Thanh toán khi nhận hàng</option>
-                  <option value="BANK">Chuyển khoản ngân hàng (giả lập)</option>
-                </select>
-              </div>
-              <button class="btn-primary" type="submit">Xác nhận đặt hàng</button>
-            </form>
-          </section>
-        </div>
-      </main>
-
-      <footer class="footer">
-        © 2025 Larkon - Trang 3.22: Đặt hàng &amp; thanh toán
-      </footer>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán - ShopVN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Split CSS into separate files -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <span>Hotline: 1900 1234 | Miễn phí vận chuyển đơn từ 500K</span>
+        <span>Tải ứng dụng | Theo dõi đơn hàng</span>
+      </div>
     </div>
-    <script src="app.js"></script>
-  </body>
+    <div class="header-main">
+      <div class="container">
+        <a href="index.html" class="logo">ShopVN</a>
+        <div class="search-box">
+          <input type="text" placeholder="Tìm kiếm sản phẩm...">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+        </div>
+        <div class="header-actions" id="user-actions">
+          <a href="login.html">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Đăng nhập
+          </a>
+        </div>
+        <a href="cart.htm" class="cart-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 12px;">
+          <div style="position: relative;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 24px; height: 24px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="cart-count" id="cart-count">0</span>
+          </div>
+          Giỏ hàng
+        </a>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="products.html">Sản phẩm</a></li>
+          <li><a href="products.html?category=Điện thoại">Điện thoại</a></li>
+          <li><a href="products.html?category=Laptop">Laptop</a></li>
+          <li><a href="products.html?category=Phụ kiện">Phụ kiện</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
+          <li><a href="returns.html">Đổi/Trả hàng</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Trang chủ</a>
+        <span>/</span>
+        <a href="cart.htm">Giỏ hàng</a>
+        <span>/</span>
+        <span>Thanh toán</span>
+      </div>
+      <h1>Thanh toán</h1>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="container" style="padding: 40px 0;">
+    <form id="checkout-form" onsubmit="handleCheckout(event)" style="display: grid; grid-template-columns: 1fr 400px; gap: 30px;">
+      <!-- Left Column - Forms -->
+      <div>
+        <!-- Shipping Info -->
+        <div class="card" style="padding: 24px; margin-bottom: 24px;">
+          <h2 style="font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+            <span style="width: 28px; height: 28px; background: #0284c7; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">1</span>
+            Thông tin giao hàng
+          </h2>
+          <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="form-group">
+              <label>Họ và tên *</label>
+              <input type="text" name="fullname" required placeholder="Nguyễn Văn A">
+            </div>
+            <div class="form-group">
+              <label>Số điện thoại *</label>
+              <input type="tel" name="phone" required placeholder="0912 345 678">
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <label>Email *</label>
+              <input type="email" name="email" required placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+              <label>Tỉnh/Thành phố *</label>
+              <select name="city" required>
+                <option value="">Chọn tỉnh/thành phố</option>
+                <option value="hanoi">Hà Nội</option>
+                <option value="hcm">TP. Hồ Chí Minh</option>
+                <option value="danang">Đà Nẵng</option>
+                <option value="haiphong">Hải Phòng</option>
+                <option value="cantho">Cần Thơ</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Quận/Huyện *</label>
+              <select name="district" required>
+                <option value="">Chọn quận/huyện</option>
+                <option value="q1">Quận 1</option>
+                <option value="q2">Quận 2</option>
+                <option value="q3">Quận 3</option>
+                <option value="q4">Quận 4</option>
+                <option value="q5">Quận 5</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <label>Địa chỉ chi tiết *</label>
+              <input type="text" name="address" required placeholder="Số nhà, tên đường, phường/xã">
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+              <label>Ghi chú</label>
+              <textarea name="note" rows="3" placeholder="Ghi chú cho đơn hàng (không bắt buộc)"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Method -->
+        <div class="card" style="padding: 24px;">
+          <h2 style="font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+            <span style="width: 28px; height: 28px; background: #0284c7; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px;">2</span>
+            Phương thức thanh toán
+          </h2>
+          <div class="payment-methods" style="display: flex; flex-direction: column; gap: 12px;">
+            <label class="payment-option" onclick="selectPayment(this)" style="display: flex; align-items: center; gap: 12px; padding: 16px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.2s;">
+              <input type="radio" name="payment" value="cod" checked style="width: 20px; height: 20px;">
+              <div style="flex: 1;">
+                <p style="font-weight: 500;">Thanh toán khi nhận hàng (COD)</p>
+                <p style="font-size: 14px; color: #6b7280;">Thanh toán bằng tiền mặt khi nhận hàng</p>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 32px; height: 32px; color: #22c55e;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </label>
+            <label class="payment-option" onclick="selectPayment(this)" style="display: flex; align-items: center; gap: 12px; padding: 16px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.2s;">
+              <input type="radio" name="payment" value="bank" style="width: 20px; height: 20px;">
+              <div style="flex: 1;">
+                <p style="font-weight: 500;">Chuyển khoản ngân hàng</p>
+                <p style="font-size: 14px; color: #6b7280;">Chuyển khoản qua tài khoản ngân hàng</p>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 32px; height: 32px; color: #0284c7;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+            </label>
+            <label class="payment-option" onclick="selectPayment(this)" style="display: flex; align-items: center; gap: 12px; padding: 16px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.2s;">
+              <input type="radio" name="payment" value="momo" style="width: 20px; height: 20px;">
+              <div style="flex: 1;">
+                <p style="font-weight: 500;">Ví MoMo</p>
+                <p style="font-size: 14px; color: #6b7280;">Thanh toán qua ví điện tử MoMo</p>
+              </div>
+              <div style="width: 32px; height: 32px; background: #a50064; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">M</div>
+            </label>
+            <label class="payment-option" onclick="selectPayment(this)" style="display: flex; align-items: center; gap: 12px; padding: 16px; border: 2px solid #e5e7eb; border-radius: 12px; cursor: pointer; transition: all 0.2s;">
+              <input type="radio" name="payment" value="vnpay" style="width: 20px; height: 20px;">
+              <div style="flex: 1;">
+                <p style="font-weight: 500;">VNPay</p>
+                <p style="font-size: 14px; color: #6b7280;">Thanh toán qua cổng VNPay</p>
+              </div>
+              <div style="width: 32px; height: 32px; background: #0066b3; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 10px;">VN</div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Order Summary -->
+      <div>
+        <div class="card" style="padding: 24px; position: sticky; top: 20px;">
+          <h2 style="font-size: 18px; margin-bottom: 20px;">Đơn hàng của bạn</h2>
+          <div id="order-items" style="max-height: 300px; overflow-y: auto; margin-bottom: 20px;">
+            <!-- Order items will be rendered here -->
+          </div>
+          <hr style="margin: 16px 0; border: none; border-top: 1px solid #e5e7eb;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>Tạm tính:</span>
+              <span id="subtotal">0đ</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>Phí vận chuyển:</span>
+              <span id="shipping">0đ</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>Giảm giá:</span>
+              <span id="discount" style="color: #22c55e;">-0đ</span>
+            </div>
+            <hr style="margin: 8px 0; border: none; border-top: 1px solid #e5e7eb;">
+            <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 20px;">
+              <span>Tổng cộng:</span>
+              <span id="total" style="color: #0284c7;">0đ</span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 24px; padding: 14px;">
+            Đặt hàng
+          </button>
+          <p style="font-size: 12px; color: #6b7280; text-align: center; margin-top: 12px;">
+            Bằng việc đặt hàng, bạn đồng ý với <a href="#" style="color: #0284c7;">Điều khoản sử dụng</a> của ShopVN
+          </p>
+        </div>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>ShopVN</h3>
+          <p>Nền tảng mua sắm trực tuyến hàng đầu Việt Nam với hàng triệu sản phẩm chất lượng.</p>
+        </div>
+        <div>
+          <h4>Hỗ trợ khách hàng</h4>
+          <ul>
+            <li><a href="#">Trung tâm trợ giúp</a></li>
+            <li><a href="#">Hướng dẫn mua hàng</a></li>
+            <li><a href="#">Chính sách đổi trả</a></li>
+            <li><a href="#">Chính sách bảo hành</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Về ShopVN</h4>
+          <ul>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Tuyển dụng</a></li>
+            <li><a href="#">Điều khoản sử dụng</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Liên hệ</h4>
+          <p>Email: support@shopvn.com</p>
+          <p>Hotline: 1900 1234</p>
+          <p>Địa chỉ: 123 Nguyễn Huệ, Q1, TP.HCM</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 ShopVN. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Split JS into separate files -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/header.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      renderCheckoutItems();
+      Cart.updateCount();
+      if (typeof updateHeader === 'function') updateHeader();
+      
+      // Set active payment option
+      const firstPayment = document.querySelector('.payment-option');
+      if (firstPayment) selectPayment(firstPayment);
+    });
+  </script>
+</body>
 </html>
