@@ -134,11 +134,12 @@
           <span class="results" id="results-count">Hiển thị 8 sản phẩm</span>
           <div class="sort">
             <label>Sắp xếp:</label>
-            <select>
-              <option>Mới nhất</option>
-              <option>Giá thấp đến cao</option>
-              <option>Giá cao đến thấp</option>
-              <option>Bán chạy nhất</option>
+            <select onchange="sortProducts(this.value)">
+              <option value="">Mới nhất</option>
+              <option value="price-asc">Giá thấp đến cao</option>
+              <option value="price-desc">Giá cao đến thấp</option>
+              <option value="name">Tên A-Z</option>
+              <option value="rating">Đánh giá cao nhất</option>
             </select>
           </div>
         </div>
@@ -196,6 +197,15 @@
       filterProductsByCategory();
       updateHeader();
       Cart.updateCount();
+      
+      // Populate search input if search query exists
+      const searchQuery = getUrlParam('search');
+      if (searchQuery) {
+        const searchInputs = document.querySelectorAll('.search-box input[type="text"]');
+        searchInputs.forEach(input => {
+          input.value = decodeURIComponent(searchQuery);
+        });
+      }
     });
   </script>
 </body>

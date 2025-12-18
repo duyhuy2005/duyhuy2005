@@ -78,7 +78,12 @@
       <!-- Return Requests List -->
       <div>
         <div class="card" style="padding: 24px;">
-          <h2 style="font-size: 18px; margin-bottom: 20px;">Yêu cầu đổi/trả của bạn</h2>
+          <h2 style="font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Yêu cầu đổi/trả của bạn
+          </h2>
           <div id="returns-list">
             <!-- Returns will be rendered here -->
           </div>
@@ -86,7 +91,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 60px; height: 60px; color: #9ca3af; margin: 0 auto 16px;">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
             </svg>
-            <p style="color: #6b7280;">Chưa có yêu cầu đổi/trả nào</p>
+            <p style="color: #6b7280; margin-bottom: 16px;">Chưa có yêu cầu đổi/trả nào</p>
+            <p style="color: #9ca3af; font-size: 14px;">Vui lòng điền form bên cạnh để tạo yêu cầu mới</p>
           </div>
         </div>
       </div>
@@ -94,7 +100,12 @@
       <!-- Create Return Request Form -->
       <div>
         <div class="card" style="padding: 24px;">
-          <h2 style="font-size: 18px; margin-bottom: 20px;">Tạo yêu cầu đổi/trả mới</h2>
+          <h2 style="font-size: 18px; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 20px; height: 20px;">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Tạo yêu cầu đổi/trả mới
+          </h2>
           <form id="return-form" onsubmit="handleReturnSubmit(event)">
             <div class="form-group">
               <label>Chọn đơn hàng *</label>
@@ -138,15 +149,21 @@
               <textarea name="description" rows="4" required placeholder="Mô tả chi tiết vấn đề bạn gặp phải..."></textarea>
             </div>
             <div class="form-group">
-              <label>Hình ảnh minh họa</label>
-              <div style="border: 2px dashed #d1d5db; border-radius: 12px; padding: 30px; text-align: center; cursor: pointer;" onclick="document.getElementById('image-input').click()">
+              <label>Hình ảnh minh họa <span style="font-weight: normal; color: #6b7280;">(Tối đa 5 ảnh)</span></label>
+              <div id="image-upload-area" style="border: 2px dashed #d1d5db; border-radius: 12px; padding: 30px; text-align: center; cursor: pointer; transition: all 0.2s;" 
+                   onclick="document.getElementById('image-input').click()"
+                   onmouseover="this.style.borderColor='#0284c7'; this.style.backgroundColor='#f0f9ff';"
+                   onmouseout="this.style.borderColor='#d1d5db'; this.style.backgroundColor='transparent';">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 40px; height: 40px; color: #9ca3af; margin: 0 auto 12px;">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <p style="color: #6b7280;">Nhấp để tải ảnh lên hoặc kéo thả</p>
-                <p style="font-size: 12px; color: #9ca3af;">PNG, JPG tối đa 5MB</p>
+                <p style="color: #6b7280; margin-bottom: 4px;">Nhấp để tải ảnh lên hoặc kéo thả</p>
+                <p style="font-size: 12px; color: #9ca3af;">PNG, JPG tối đa 5MB mỗi ảnh</p>
               </div>
-              <input type="file" id="image-input" accept="image/*" multiple style="display: none;">
+              <input type="file" id="image-input" accept="image/*" multiple style="display: none;" onchange="handleImagePreview(event)">
+              <div id="image-preview" style="display: none; margin-top: 16px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px;" id="image-preview-grid"></div>
+              </div>
             </div>
             <button type="submit" class="btn btn-primary" style="width: 100%;">Gửi yêu cầu</button>
           </form>

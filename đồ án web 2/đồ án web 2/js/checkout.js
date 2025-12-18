@@ -27,7 +27,7 @@ function renderCheckoutItems() {
         return `
     <div class="order-item">
       <div class="order-item-image">
-        <img src="${item.image}" alt="${item.name}">
+        <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='./public/placeholder.jpg';">
       </div>
       <div class="order-item-info">
         <h4>${item.name}</h4>

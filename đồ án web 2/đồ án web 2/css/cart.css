@@ -309,6 +309,12 @@
   margin-bottom: 20px;
 }
 
+@media (max-width: 1024px) {
+  .cart-page {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .cart-page {
     grid-template-columns: 1fr;

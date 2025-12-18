@@ -26,10 +26,8 @@ function updateHeader() {
   if (Auth.isLoggedIn()) {
     const user = Auth.getUser()
     userActions.innerHTML = `
-      <a href="orders.html">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-        </svg>
+      <a href="orders.html" style="display: flex; flex-direction: column; align-items: center; font-size: 12px; text-decoration: none; color: var(--foreground);">
+        <img src="https://via.placeholder.com/24x24/4A90E2/FFFFFF?text=📦" alt="Đơn hàng" style="width: 24px; height: 24px; margin-bottom: 4px;">
         Đơn hàng
       </a>
       <div class="user-dropdown">
@@ -46,10 +44,8 @@ function updateHeader() {
     `
   } else {
     userActions.innerHTML = `
-      <a href="login.html">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
+      <a href="login.html" style="display: flex; flex-direction: column; align-items: center; font-size: 12px; text-decoration: none; color: var(--foreground);">
+        <img src="images/user-icon.png" alt="Đăng nhập" style="width: 24px; height: 24px; margin-bottom: 4px;">
         Đăng nhập
       </a>
     `
@@ -59,7 +55,53 @@ function updateHeader() {
   Cart.updateCount()
 }
 
-// Initialize header on page load
+// Initialize search functionality
+function initSearch() {
+  // Find all search boxes on the page
+  const searchBoxes = document.querySelectorAll(".search-box")
+  
+  searchBoxes.forEach((searchBox) => {
+    const searchInput = searchBox.querySelector("input[type='text']")
+    const searchButton = searchBox.querySelector("button")
+    
+    if (!searchInput) return
+    
+    // Handle search button click
+    if (searchButton) {
+      searchButton.addEventListener("click", (e) => {
+        e.preventDefault()
+        handleSearch(searchInput.value.trim())
+      })
+    }
+    
+    // Handle Enter key press
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault()
+        handleSearch(searchInput.value.trim())
+      }
+    })
+  })
+}
+
+// Handle search function
+function handleSearch(query) {
+  if (!query || query.length === 0) {
+    // If empty, just go to products page
+    window.location.href = "products.html"
+    return
+  }
+  
+  // Encode query and redirect to products page
+  const encodedQuery = encodeURIComponent(query)
+  window.location.href = `products.html?search=${encodedQuery}`
+}
+
+// Make handleSearch globally available
+window.handleSearch = handleSearch
+
+// Initialize header and search on page load
 document.addEventListener("DOMContentLoaded", () => {
   updateHeader()
+  initSearch()
 })

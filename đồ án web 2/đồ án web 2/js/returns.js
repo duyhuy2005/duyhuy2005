@@ -227,6 +227,23 @@ function renderReturns(container) {
         <p style="margin-bottom: 8px;"><strong>Loại:</strong> ${ret.type === "return" ? "Trả hàng hoàn tiền" : "Đổi hàng"}</p>
         <p style="margin-bottom: 8px;"><strong>Lý do:</strong> ${ret.reason || "N/A"}</p>
         ${ret.description ? `<p style="margin-bottom: 8px; color: var(--muted-foreground); font-size: 14px;">${ret.description}</p>` : ''}
+        ${ret.images && ret.images.length > 0 ? `
+        <div style="margin-top: 12px; margin-bottom: 8px;">
+          <p style="font-size: 12px; color: var(--muted-foreground); margin-bottom: 8px;">Hình ảnh đính kèm (${ret.images.length}):</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            ${ret.images.slice(0, 3).map((img, idx) => `
+              <img src="${img}" 
+                   alt="Hình ${idx + 1}" 
+                   onclick="viewImageModal('${img}')"
+                   style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid var(--border); transition: transform 0.2s;"
+                   onmouseover="this.style.transform='scale(1.1)'"
+                   onmouseout="this.style.transform='scale(1)'"
+                   title="Click để xem ảnh lớn">
+            `).join('')}
+            ${ret.images.length > 3 ? `<div style="width: 60px; height: 60px; border-radius: 6px; background: var(--muted); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--muted-foreground); border: 2px solid var(--border);">+${ret.images.length - 3}</div>` : ''}
+          </div>
+        </div>
+        ` : ''}
         <p class="text-muted" style="font-size: 12px;">Ngày tạo: ${ret.createdAt ? new Date(ret.createdAt).toLocaleString("vi-VN") : "N/A"}</p>
       </div>
     </div>
@@ -311,9 +328,15 @@ function submitReturnRequest(orderId, productId, type, reason, description, imag
     const productSelect = document.getElementById("product-select")
     if (productSelect) productSelect.disabled = true
     
-    // Clear image input
+    // Clear image input and preview
     const imageInput = document.getElementById("image-input")
     if (imageInput) imageInput.value = ""
+    const imagePreview = document.getElementById("image-preview")
+    if (imagePreview) {
+      imagePreview.style.display = "none"
+      const previewGrid = document.getElementById("image-preview-grid")
+      if (previewGrid) previewGrid.innerHTML = ""
+    }
 
     // Refresh lists
     loadDeliveredOrders()
@@ -330,8 +353,99 @@ function submitReturnRequest(orderId, productId, type, reason, description, imag
   }
 }
 
+// Handle image preview
+function handleImagePreview(event) {
+  const files = event.target.files
+  const previewContainer = document.getElementById("image-preview")
+  const previewGrid = document.getElementById("image-preview-grid")
+  
+  if (!previewContainer || !previewGrid) return
+
+  if (files.length === 0) {
+    previewContainer.style.display = "none"
+    previewGrid.innerHTML = ""
+    return
+  }
+
+  // Limit to 5 images
+  const filesArray = Array.from(files).slice(0, 5)
+  
+  previewGrid.innerHTML = ""
+  previewContainer.style.display = "block"
+
+  filesArray.forEach((file, index) => {
+    // Validate file size (5MB max)
+    if (file.size > 5 * 1024 * 1024) {
+      showToast(`Ảnh ${file.name} vượt quá 5MB!`, "error")
+      return
+    }
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const previewItem = document.createElement("div")
+      previewItem.style.position = "relative"
+      previewItem.innerHTML = `
+        <img src="${e.target.result}" 
+             alt="Preview ${index + 1}" 
+             style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px; border: 2px solid var(--border);">
+        <button type="button" 
+                onclick="removeImagePreview(${index})" 
+                style="position: absolute; top: -8px; right: -8px; background: var(--danger); color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center;"
+                title="Xóa ảnh">&times;</button>
+      `
+      previewGrid.appendChild(previewItem)
+    }
+    reader.readAsDataURL(file)
+  })
+}
+
+// Remove image from preview
+function removeImagePreview(index) {
+  const imageInput = document.getElementById("image-input")
+  if (!imageInput) return
+
+  const dt = new DataTransfer()
+  const files = Array.from(imageInput.files)
+  
+  files.forEach((file, i) => {
+    if (i !== index) {
+      dt.items.add(file)
+    }
+  })
+  
+  imageInput.files = dt.files
+  handleImagePreview({ target: imageInput })
+}
+
 // Make functions globally available
 window.loadDeliveredOrders = loadDeliveredOrders
 window.loadOrderProducts = loadOrderProducts
 window.renderReturns = renderReturns
 window.handleReturnSubmit = handleReturnSubmit
+window.handleImagePreview = handleImagePreview
+window.removeImagePreview = removeImagePreview
+
+// View image in modal
+function viewImageModal(imageSrc) {
+  const modal = document.createElement("div")
+  modal.style.cssText = `
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+    background: rgba(0,0,0,0.9); z-index: 9999; 
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+  `
+  modal.onclick = () => modal.remove()
+  
+  const img = document.createElement("img")
+  img.src = imageSrc
+  img.style.cssText = `
+    max-width: 90%; max-height: 90%; 
+    object-fit: contain; border-radius: 8px;
+  `
+  img.onclick = (e) => e.stopPropagation()
+  
+  modal.appendChild(img)
+  document.body.appendChild(modal)
+}
+
+window.viewImageModal = viewImageModal

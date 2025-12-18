@@ -254,7 +254,7 @@ function renderCart() {
           return `
       <div class="cart-item">
         <div class="cart-item-image">
-          <img src="${item.image}" alt="${item.name}">
+          <img src="${item.image}" alt="${item.name}" onerror="this.onerror=null; this.src='./public/placeholder.jpg';">
         </div>
         <div class="cart-item-info">
           <h3>${item.name}</h3>
