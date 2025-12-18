@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đơn hàng của tôi - ShopVN</title>
+  <title>Giỏ hàng - ShopVN</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Split CSS into separate files -->
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/orders.css">
   <link rel="stylesheet" href="css/cart.css">
 </head>
 <body>
@@ -25,17 +24,21 @@
         <a href="index.html" class="logo">ShopVN</a>
         <div class="search-box">
           <input type="text" placeholder="Tìm kiếm sản phẩm...">
-          <button>Tìm</button>
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
         </div>
         <div class="header-actions" id="user-actions">
           <a href="login.html">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
-            Đăng xuất
+            Đăng nhập
           </a>
         </div>
-        <a href="cart.html" class="cart-icon">
+        <a href="cart.htm" class="cart-icon" style="display: flex; flex-direction: column; align-items: center; font-size: 12px;">
           <div style="position: relative;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 24px; height: 24px;">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -54,7 +57,7 @@
           <li><a href="products.html?category=Điện thoại">Điện thoại</a></li>
           <li><a href="products.html?category=Laptop">Laptop</a></li>
           <li><a href="products.html?category=Phụ kiện">Phụ kiện</a></li>
-          <li><a href="orders.html" class="active">Đơn hàng</a></li>
+          <li><a href="orders.html">Đơn hàng</a></li>
           <li><a href="returns.html">Đổi/Trả hàng</a></li>
         </ul>
       </div>
@@ -67,53 +70,63 @@
       <div class="breadcrumb">
         <a href="index.html">Trang chủ</a>
         <span>/</span>
-        <span>Đơn hàng của tôi</span>
+        <span>Giỏ hàng</span>
       </div>
-      <h1>Đơn hàng của tôi</h1>
+      <h1>Giỏ hàng của bạn</h1>
     </div>
   </div>
 
   <!-- Main Content -->
   <main class="container" style="padding: 40px 0;">
-    <!-- Order Status Tabs -->
-    <div class="order-tabs" style="display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;">
-      <button class="tab-btn active" data-status="all" onclick="filterOrders('all', this)">Tất cả</button>
-      <button class="tab-btn" data-status="pending" onclick="filterOrders('pending', this)">Chờ xác nhận</button>
-      <button class="tab-btn" data-status="confirmed" onclick="filterOrders('confirmed', this)">Đã xác nhận</button>
-      <button class="tab-btn" data-status="shipping" onclick="filterOrders('shipping', this)">Đang giao</button>
-      <button class="tab-btn" data-status="delivered" onclick="filterOrders('delivered', this)">Đã giao</button>
-      <button class="tab-btn" data-status="cancelled" onclick="filterOrders('cancelled', this)">Đã hủy</button>
+    <div class="cart-page" style="display: grid; grid-template-columns: 1fr 350px; gap: 30px;">
+      <div class="cart-items" id="cart-items">
+        <!-- Cart items will be rendered here -->
+      </div>
+
+      <div class="cart-summary" id="cart-summary">
+        <div class="card" style="padding: 24px; position: sticky; top: 20px;">
+          <h2 style="margin-bottom: 20px; font-size: 18px;">Tóm tắt đơn hàng</h2>
+          <div id="summary-content">
+            <div class="summary-row">
+              <span>Tạm tính:</span>
+              <span id="subtotal">0đ</span>
+            </div>
+            <div class="summary-row">
+              <span>Phí vận chuyển:</span>
+              <span id="shipping">0đ</span>
+            </div>
+            <div class="summary-row">
+              <span>Giảm giá:</span>
+              <span id="discount" style="color: #22c55e;">-0đ</span>
+            </div>
+            <hr style="margin: 16px 0; border: none; border-top: 1px solid var(--border);">
+            <div class="summary-row total">
+              <span>Tổng cộng:</span>
+              <span id="total" style="color: var(--danger); font-size: 20px; font-weight: 700;">0đ</span>
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <div class="coupon-input">
+              <input type="text" id="coupon-input" placeholder="Mã giảm giá" style="flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius);">
+              <button onclick="Cart.applyCoupon()" class="btn btn-outline">Áp dụng</button>
+            </div>
+            <a href="checkout.html" class="btn btn-primary btn-block btn-lg" id="checkout-btn" style="margin-top: 16px;">Tiến hành thanh toán</a>
+            <a href="products.html" class="btn btn-outline btn-block" style="margin-top: 12px;">Tiếp tục mua sắm</a>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Orders List -->
-    <div id="orders-list">
-      <!-- Orders will be rendered here -->
-    </div>
-
-    <!-- Empty State -->
-    <div id="empty-orders" style="display: none; text-align: center; padding: 60px 20px;">
+    <!-- Empty Cart State -->
+    <div id="empty-cart" style="display: none; text-align: center; padding: 60px 20px;">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 80px; height: 80px; color: #9ca3af; margin: 0 auto 20px;">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
-      <h2 style="font-size: 24px; margin-bottom: 12px;">Chưa có đơn hàng</h2>
-      <p style="color: #6b7280; margin-bottom: 24px;">Bạn chưa có đơn hàng nào</p>
-      <a href="products.html" class="btn btn-primary">Mua sắm ngay</a>
+      <h2 style="font-size: 24px; margin-bottom: 12px;">Giỏ hàng trống</h2>
+      <p style="color: #6b7280; margin-bottom: 24px;">Bạn chưa có sản phẩm nào trong giỏ hàng</p>
+      <a href="products.html" class="btn btn-primary">Tiếp tục mua sắm</a>
     </div>
   </main>
-
-  <!-- Order Detail Modal -->
-  <div id="order-modal" class="modal" style="display: none;">
-    <div class="modal-overlay" onclick="closeModal()"></div>
-    <div class="modal-content" style="max-width: 700px;">
-      <div class="modal-header">
-        <h2>Chi tiết đơn hàng</h2>
-        <button onclick="closeModal()" class="close-btn">&times;</button>
-      </div>
-      <div class="modal-body" id="order-detail-content">
-        <!-- Order detail will be rendered here -->
-      </div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="footer">
@@ -159,20 +172,35 @@
   <script src="js/data.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/cart.js"></script>
-  <script src="js/orders.js"></script>
   <script src="js/header.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize orders to ensure latest data is loaded
-      Orders.init();
-      
-      // Render orders
-      const ordersList = document.getElementById('orders-list');
-      renderOrders(ordersList, 'all');
-      
-      // Update header and cart count
+      Cart.render();
+      Cart.updateCount();
       if (typeof updateHeader === 'function') updateHeader();
-      if (Cart && typeof Cart.updateCount === 'function') Cart.updateCount();
+      
+      // Allow Enter key to apply coupon
+      const couponInput = document.getElementById('coupon-input');
+      if (couponInput) {
+        couponInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            Cart.applyCoupon();
+          }
+        });
+      }
+      
+      // Add event delegation for remove buttons
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-btn')) {
+          const btn = e.target.closest('.remove-btn');
+          const itemId = btn.getAttribute('data-item-id') || btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+          if (itemId) {
+            e.preventDefault();
+            e.stopPropagation();
+            removeFromCart(itemId);
+          }
+        }
+      });
     });
   </script>
 </body>
