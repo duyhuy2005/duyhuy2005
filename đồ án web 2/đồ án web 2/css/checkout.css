@@ -9,12 +9,12 @@
 }
 
 .checkout-section {
-  background-color: var(--card);
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 28px;
   margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .checkout-section h2 {

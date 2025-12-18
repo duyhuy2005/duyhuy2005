@@ -32,11 +32,18 @@
 }
 
 .order-card {
-  background-color: var(--card);
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   margin-bottom: 16px;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.order-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
 .order-card-header {

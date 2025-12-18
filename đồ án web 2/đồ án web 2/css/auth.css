@@ -16,6 +16,8 @@
 
 .auth-card .card {
   padding: 32px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .auth-header {

@@ -10,11 +10,12 @@
 }
 
 .return-card {
-  background-color: var(--card);
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
   margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .return-card-header {

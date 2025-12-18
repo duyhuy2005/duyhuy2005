@@ -205,7 +205,7 @@ const AppData = {
       category: "Máy tính bảng",
       price: 15990000,
       originalPrice: 18990000,
-      image: "https://images.unsplash.com/photo-1574947610763-1dc0a1d50397?w=400",
+      image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=500&fit=crop",
       rating: 4.5,
       reviews: 89,
       discount: 16,
@@ -296,7 +296,7 @@ const AppData = {
       category: "Phụ kiện",
       price: 1290000,
       originalPrice: 1590000,
-      image: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c8?w=400",
+      image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=400&h=400&fit=crop",
       rating: 4.6,
       reviews: 567,
       discount: 19,
@@ -361,7 +361,7 @@ const AppData = {
       category: "Điện thoại",
       price: 18990000,
       originalPrice: 21990000,
-      image: "https://images.unsplash.com/photo-1574944890279-341d1e9b9cde?w=400",
+      image: "https://images.unsplash.com/photo-1601972602237-8c79241e468b?w=400&h=400&fit=crop",
       rating: 4.6,
       reviews: 156,
       discount: 14,
@@ -455,3 +455,6 @@ const AppData = {
     )
   },
 }
+
+// Expose AppData to window for global access
+window.AppData = AppData

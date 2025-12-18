@@ -8,27 +8,46 @@
 }
 
 :root {
-  --primary: #0284c7;
-  --primary-hover: #0369a1;
+  --primary: #0ea5e9;
+  --primary-hover: #0284c7;
   --primary-light: #e0f2fe;
   --secondary: #64748b;
-  --success: #22c55e;
+  --success: #10b981;
   --warning: #f59e0b;
   --danger: #ef4444;
-  --background: #f8fafc;
+  --background: #f0f9ff;
   --foreground: #0f172a;
   --card: #ffffff;
-  --border: #e2e8f0;
-  --muted: #f1f5f9;
+  --border: #cbd5e1;
+  --muted: #f8fafc;
   --muted-foreground: #64748b;
-  --radius: 8px;
+  --radius: 12px;
 }
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--background);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 30%, #fefefe 70%, #f8fafc 100%);
+  background-attachment: fixed;
   color: var(--foreground);
   line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Add subtle background pattern */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(2, 132, 199, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(56, 189, 248, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 90% 10%, rgba(125, 211, 252, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 a {
@@ -69,12 +88,15 @@ img {
 }
 
 .btn-primary {
-  background-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
   color: white;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-hover);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, #0369a1 100%);
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-outline {
@@ -111,10 +133,11 @@ img {
 }
 
 .card {
-  background-color: var(--card);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(203, 213, 225, 0.8);
   border-radius: var(--radius);
   padding: 24px;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.06);
 }
 
 .input-group {
@@ -147,31 +170,33 @@ img {
 }
 
 .badge {
-  display: inline-block;
-  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
   border-radius: 20px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .badge-success {
-  background-color: #dcfce7;
-  color: #166534;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
 }
 
 .badge-warning {
-  background-color: #fef3c7;
-  color: #92400e;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
 }
 
 .badge-danger {
-  background-color: #fee2e2;
-  color: #991b1b;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
 }
 
 .badge-info {
-  background-color: var(--primary-light);
-  color: var(--primary);
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white;
 }
 
 .text-center {
